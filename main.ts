@@ -5,6 +5,9 @@ basic.forever(function () {
     lies = pins.analogReadPin(AnalogPin.P0)
     if (skin < lies) {
         basic.clearScreen()
+        pins.analogWritePin(AnalogPin.P15, 1023)
+        pins.analogWritePin(AnalogPin.P14, 0)
+        pins.analogWritePin(AnalogPin.P13, 0)
         basic.showLeds(`
             # . # . #
             . # . # .
@@ -12,11 +15,11 @@ basic.forever(function () {
             . # . # .
             # . . . #
             `)
-        pins.analogWritePin(AnalogPin.P6, 1023)
-        pins.analogWritePin(AnalogPin.P7, 0)
-        pins.analogWritePin(AnalogPin.P8, 0)
     } else {
         basic.clearScreen()
+        pins.analogWritePin(AnalogPin.P15, 0)
+        pins.analogWritePin(AnalogPin.P14, 0)
+        pins.analogWritePin(AnalogPin.P13, 1023)
         basic.showLeds(`
             # . . . #
             # . # . #
@@ -24,9 +27,6 @@ basic.forever(function () {
             . # . # .
             . . # . .
             `)
-        pins.analogWritePin(AnalogPin.P6, 0)
-        pins.analogWritePin(AnalogPin.P7, 0)
-        pins.analogWritePin(AnalogPin.P8, 1023)
         music.play(music.stringPlayable("C5 B A B C5 B A G ", 120), music.PlaybackMode.UntilDone)
     }
 })
